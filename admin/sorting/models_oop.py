@@ -83,15 +83,37 @@ class Contacts(object):
 
 @dataclass
 class Grade(object):
-    pass
+    def __init__(self, kor, eng, math):
+        self.kor = kor
+        self.eng = eng
+        self.math = math
+
+    def sum(self):
+        return self.kor + self.eng + self.math
+
+    def avg(self):
+        return self.sum() / 3
 
 
 @dataclass
 class GradeWithName(object):
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.scores = []
+
+    def addScores(self, score):
+        self.scores.append(score)
+
+    def avg(self):
+        return sum(self.scores) / len(self.scores)
 
 
 
 @dataclass
 class Person(object):
-    pass
+    def __init__(self,name,age,address):
+        self.name = name
+        self.age = age
+        self.address = address
+    def to_string(self):
+        print(f'이름{self.name},나이{self.age},사는곳{self.address}')
