@@ -30,7 +30,7 @@ class Palindrome(object):
         return [i.lower() for i in self.input_string if i.isalnum()]
 
     def isPalindrome(self, ls : []) -> bool:
-        return [False for i in ls if ls.pop(0) != ls.pop()]
+        return {False for i in ls if ls.pop(0) != ls.pop()}
 
     def reverse_string(self, ls : []) -> []:
         # return ls[::-1]

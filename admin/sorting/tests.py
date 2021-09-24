@@ -18,12 +18,12 @@ class TestPalindrome(unittest.TestCase):
 
     def test_str_to_list(self):
         instance = Palindrome()
-        instance.input_string = 'applE'
+        instance.input_string = 'applyyrthE'
         ls = instance.str_to_list()
         print(f'My Expected Value is {ls}')
         res = instance.isPalindrome(ls)
         print(f'My Expected Value is {res}')
-        self.assertEqual(res, False)
+        self.assertEqual(res, {False})
 
     def test_reverse_string(self):
         instance = Palindrome()
@@ -31,7 +31,8 @@ class TestPalindrome(unittest.TestCase):
         ls = instance.str_to_list()
         print(f'My Expected Value is {ls}')
         res = instance.reverse_string(ls)
-        print(f'My Expected Value is {res}')
+        self.assertEqual(res, ['e', 'l', 'p', 'p', 'a'])
+
 
 
 if __name__ == '__main__':

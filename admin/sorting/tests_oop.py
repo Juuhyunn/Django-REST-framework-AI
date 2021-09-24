@@ -36,33 +36,35 @@ class TestCalculator(unittest.TestCase):
 
 class TestContacts(unittest.TestCase):
     def test_contacts(self):
-        instance = Contacts('','','','')
-        a = instance.set_contact('안주땡', '010', '지메일', '서울')
-        b = instance.set_contact('주주주', '111', '네이버', '부산')
-        # instance.name='안주땡'
-        # instance.phone = '010'
-        # instance.email = '지메일'
-        # instance.address = ''
         ls = []
-        ls.append(a)
-        ls.append(b)
-        a.get_contacts(ls[0])
-        instance.del_contact(ls, '안주땡')
-        print(f'My Expected Value is {ls}')
+        c = Contacts()
+        ls.append(c.set_contact('name1', 'phone1', 'email1', 'address1'))
+        ls.append(c.set_contact('name2', 'phone2', 'email2', 'address2'))
+        c.get_contact(ls)
+        c.del_contact(ls, 'name2')
+        self.assertEqual(ls[0].name, 'name1')
 
 
+class TestGrade(unittest.TestCase):
+    def test_sum(self):
+        grade = Grade(1,2,3)
+        res = grade.sum()
+        self.assertEqual(res,6)
+
+    def test_avg(self):
+        grade = Grade(1,2,3)
+        res = grade.avg()
+        self.assertEqual(res, 2)
 
 
-
-
-    def test_get_contacts(self, ls):
-        for i in ls:
-            i.to_string()
-
-    def test_del_contact(self, ls, name):
-        for i, j in enumerate(ls):
-            if name == j.name:
-                del ls[i]
+class TestGradeWithName(unittest.TestCase):
+    def test_GradeWithName(self):
+        gwn = GradeWithName()
+        ls = []
+        ls.append(gwn.scores(100))
+        ls.append(gwn.scores(20))
+        res = gwn.avg(ls)
+        self.assertEqual(res, 60)
 
 if __name__ == '__main__':
     unittest.main()
